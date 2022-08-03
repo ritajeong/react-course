@@ -5,14 +5,13 @@ import FavoritesPage from './pages/Favorites';
 import MainNavigation from './components/layout/MainNavigation';
 
 function App() {
-  return <div>
-    <MainNavigation>
+  return <div id='app'>
+    <MainNavigation/>
       <Routes>
         <Route path='/' exact element={<AllMeetupsPage/>} />
         <Route path='/new-meetup' element={<NewMeetupPage/>} />
         <Route path='/favorites' element={<FavoritesPage/>} />
       </Routes>
-    </MainNavigation>
   </div>;
 }
 
