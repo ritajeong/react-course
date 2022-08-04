@@ -2,7 +2,7 @@ import { useRef } from "react";
 import Card from "../ui/Card";
 import classes from "./NewMeetupForm.module.css";
 
-function NewMeetupForm() {
+function NewMeetupForm(props) {
   const titleInputRef = useRef(); //참조 객체가 생성됨
   const imageInputRef = useRef();
   const addressInputRef = useRef();
@@ -22,11 +22,11 @@ function NewMeetupForm() {
       description: enteredDescription
     }
 
-    console.log(meetupData);
+    props.onAddMeetup(meetupData);
   }
   return (
     <Card>
-      <form className={classes.form} onSubmit={submitHandler}>
+      <form classNameb={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor="title">Meetup Title</label>
           <input type="text" required id="title" ref={imageInputRef}/>
