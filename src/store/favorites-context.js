@@ -2,10 +2,13 @@ import { createContext, useState } from 'react';
 
 const FavoritesContext = createContext({
   favorites: [],
-  totalFavorites: 0
+  totalFavorites: 0,
+  addFavorite: (favoriteMeetup) => { },
+  removeFavorite: (meetupId) => { },
+  itemIsFavorite: (meetupId) => { }
 });
 
-function FavoritesContextProvider(props) {
+export function FavoritesContextProvider(props) { // export 1 : 함수로 내보냄
   const [userFavorites, setUserFavorites] = useState([]);
 
   function addFavoriteHandler(favoriteMeetup) {
@@ -27,9 +30,13 @@ function FavoritesContextProvider(props) {
   }
 
 
+  
   const context = { //컴포넌트에 전달해야하는 최신값을 보유하고 있음(value context로 전달하는)
     favorites: userFavorites, //context의 초기값에도 정의했기 때문에 Favorites의 키값을 가지고 있음. userFavorites 배열을 state값으로 설정함.
-    totalFavorites: userFavorites.length
+    totalFavorites: userFavorites.length,
+    addFavorite: addFavoriteHandler, // 이 컨텍스트에 함수를 추가할 수 있음
+    removeFavorite: removeFavoriteHandler, //그냥 이 컴포넌트에 정의한 함수를 앱 전체의 관련 컴포넌트에 노출하는 것
+    itemIsFavorite: itemIsFavoriteHandler
   };
 
   return <FavoritesContext.Provider value={context}>
@@ -54,3 +61,6 @@ state가 바뀌면 재실행되고 재평가됨.
 즉, 컴포넌트에서 context값을 변경하고 이 context값을 provider에게 전달하면, 
 해당 context를 받는 모든 componenet가 변경되기 때문에 업데이트된 최신 데이터를 가져올 수 있다.
 */
+
+export default FavoritesContext; // export 2 디폴트로 내보냄.
+// 두번 export하는 이유 : 이 파일 밖에서도 두 객체 모두와 대화해야하기 때문
