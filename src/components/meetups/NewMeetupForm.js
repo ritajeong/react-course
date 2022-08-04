@@ -29,11 +29,11 @@ function NewMeetupForm(props) {
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor="title">Meetup Title</label>
-          <input type="text" required id="title" ref={imageInputRef}/>
+          <input type="text" required id="title" ref={titleInputRef}/>
         </div>
         <div className={classes.control}>
           <label htmlFor="image">Meetup Image</label>
-          <input type="url" required id="image" ref={titleInputRef} />
+          <input type="url" required id="image" ref={imageInputRef} />
         </div>
         <div className={classes.control}>
           <label htmlFor="address">Address</label>
