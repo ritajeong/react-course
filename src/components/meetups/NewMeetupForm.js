@@ -26,7 +26,7 @@ function NewMeetupForm(props) {
   }
   return (
     <Card>
-      <form classNameb={classes.form} onSubmit={submitHandler}>
+      <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor="title">Meetup Title</label>
           <input type="text" required id="title" ref={imageInputRef}/>
